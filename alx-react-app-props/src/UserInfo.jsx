@@ -1,7 +1,7 @@
 import UserDetails from './UserDetails';
-import 
+
 function UserInfo() {
-  return <UserDetails userData={userData} />;
+  return <UserDetails  />;
 }
 
 export default UserInfo;

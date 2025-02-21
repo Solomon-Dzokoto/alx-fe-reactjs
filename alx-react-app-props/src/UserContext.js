@@ -1,13 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-export const context = React.createContext()
+const UserContext = React.createContext(null);
 
-const UserContext = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-
-export default UserContext
+export default UserContext;
