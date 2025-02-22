@@ -5,4 +5,5 @@ export  const UserContext = React.createContext({
     setUserData:()=>{}
 });
 
+export default UserContext;
 
