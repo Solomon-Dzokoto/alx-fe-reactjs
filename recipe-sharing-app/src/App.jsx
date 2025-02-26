@@ -3,6 +3,7 @@ import RecipeList from "./components/RecipeList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecipeDetails from "./components/EditRecipeForm";
 import SearchBar from "./components/SearchBar";
+import FavoritesList from "./components/FavoritesList";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<AddRecipeForm />} />
           <Route path="/details/:id" element={<RecipeDetails />} />
+          <Route path="/favorites" element={<FavoritesList />} />
         </Routes>
         <RecipeList />
       </BrowserRouter>

@@ -3,17 +3,27 @@ import { create } from "zustand";
 export const useRecipeStore = create((set) => ({
   recipes: [],
   searchTerm: '',
-  setSearchTerm: (term) => set({ searchTerm: term }),
+  favorites: [],
+  recommendations: [],
+  setSearchTerm: (term) => set((state) => {
+    const filtered = state.recipes.filter(recipe => 
+      recipe.title.toLowerCase().includes(term.toLowerCase())
+    );
+    return { 
+      searchTerm: term,
+      filteredRecipes: filtered 
+    };
+  }),
   filteredRecipes: [],
-  filterRecipes:()=>set(state=>({
-    filteredRecipes: state.recipes.filter(recipe => recipe.name.toLowerCase().includes(state.searchTerm.toLowerCase()))
-  })),
   addRecipe: (newRecipe) =>
     set((state) => {
-      console.log(newRecipe)
-      const added = [...state.recipes, newRecipe]
-      console.log(added)
-      return { recipes: added }
+      const added = [...state.recipes, newRecipe];
+      return { 
+        recipes: added,
+        filteredRecipes: added.filter(recipe => 
+          recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
+        )
+      };
     }),
   setRecipes: (recipes) => set({ recipes }),
   updateRecipe : (newRecipe) => set((state)=>{
@@ -30,5 +40,24 @@ export const useRecipeStore = create((set) => ({
   deleteRecipe: (id) => set((state) => {{
     const eliminate = state.recipes.filter(recipe => recipe.id !== id)
    return { recipes: [...eliminate]}
-  }})
+  }}),
+  addFavorite: (recipeId) => 
+    set((state) => ({
+      favorites: [...state.favorites, recipeId]
+    })),
+  removeFavorite: (recipeId) => 
+    set((state) => ({
+      favorites: state.favorites.filter(id => id !== recipeId)
+    })),
+  generateRecommendations: () => 
+    set((state) => {
+      const recommendedRecipes = state.recipes.filter(recipe => 
+        !state.favorites.includes(recipe.id) && 
+        state.favorites.some(favId => {
+          const favRecipe = state.recipes.find(r => r.id === favId);
+          return favRecipe && favRecipe.title.toLowerCase().includes(recipe.title.toLowerCase());
+        })
+      );
+      return { recommendations: recommendedRecipes.slice(0, 3) };
+    })
 }));
