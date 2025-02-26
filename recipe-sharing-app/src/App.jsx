@@ -2,11 +2,13 @@ import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeList from "./components/RecipeList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecipeDetails from "./components/EditRecipeForm";
+import SearchBar from "./components/SearchBar";
 
 const App = () => {
   return (
     <div className="app">
       <BrowserRouter>
+        <SearchBar/>
         <h1>Recipe Book</h1>
         <Routes>
           <Route path="/" element={<AddRecipeForm />} />
