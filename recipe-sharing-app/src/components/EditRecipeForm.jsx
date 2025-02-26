@@ -29,8 +29,8 @@ const RecipeDetails = () => {
     return <div>Recipe details are not available</div>;
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     updateRecipe(id,newTitle, newDescription);
     alert("Your recipe has been updated");
     navigate("/");
