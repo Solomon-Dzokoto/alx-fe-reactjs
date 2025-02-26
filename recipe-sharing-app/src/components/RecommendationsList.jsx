@@ -1,4 +1,4 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRecipeStore } from './recipeStore';
 import { Link } from "react-router-dom";
 import { FaHeart } from 'react-icons/fa';

@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecipeDetails from "./components/EditRecipeForm";
 import SearchBar from "./components/SearchBar";
 import FavoritesList from "./components/FavoritesList";
-import RecommendationsList from "../../src/components/RecommendationsList";
+import RecommendationsList from "./components/RecommendationsList";
 const App = () => {
   return (
     <div className="app">
