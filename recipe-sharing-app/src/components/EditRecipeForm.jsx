@@ -1,6 +1,7 @@
 import { useRecipeStore } from "./recipeStore";
 import { useState, useEffect } from "react";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import DeleteRecipeButton from "./DeleteRecipeButton";
 
 const RecipeDetails = () => {
   const [newTitle, setNewTitle] = useState("");
@@ -11,7 +12,7 @@ const RecipeDetails = () => {
   const recipes = useRecipeStore((state) => state.recipes);
   const updateRecipe = useRecipeStore((state) => state.updateRecipe);
   const recipe = recipes.find((recipe) => recipe.id === parseInt(id));
-  
+
   useEffect(() => {
     if (recipe) {
       setNewTitle(recipe.title);
@@ -31,7 +32,7 @@ const RecipeDetails = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateRecipe(id,newTitle, newDescription);
+    updateRecipe(id, newTitle, newDescription);
     alert("Your recipe has been updated");
     navigate("/");
   };
@@ -56,6 +57,7 @@ const RecipeDetails = () => {
         />
         <button type="submit">Save changes</button>
       </form>
+      <DeleteRecipeButton />
     </div>
   );
 };
