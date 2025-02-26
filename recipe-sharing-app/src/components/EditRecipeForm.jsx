@@ -1,7 +1,6 @@
 import { useRecipeStore } from "./recipeStore";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import DeleteRecipeButton from "./DeleteRecipeButton";
 
 const RecipeDetails = () => {
   const [newTitle, setNewTitle] = useState("");
@@ -32,15 +31,17 @@ const RecipeDetails = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateRecipe(id, newTitle, newDescription);
+    updateRecipe({
+      id : parseInt(id),
+      title : newTitle,
+      description: newDescription
+    });
     alert("Your recipe has been updated");
     navigate("/");
   };
 
   return (
     <div>
-      <h1>{recipes.title}</h1>
-      <p>{recipes.description}</p>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -57,7 +58,6 @@ const RecipeDetails = () => {
         />
         <button type="submit">Save changes</button>
       </form>
-      <DeleteRecipeButton />
     </div>
   );
 };

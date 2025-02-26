@@ -5,19 +5,24 @@ export const useRecipeStore = create((set) => ({
   addRecipe: (newRecipe) =>
     set((state) => {
       console.log(newRecipe)
-      return { recipes: [...state.recipes, newRecipe] }
+      const added = [...state.recipes, newRecipe]
+      console.log(added)
+      return { recipes: added }
     }),
   setRecipes: (recipes) => set({ recipes }),
   updateRecipe : (newRecipe) => set((state)=>{
     const index = state.recipes.findIndex(recipe => recipe.id === newRecipe?.id);
-    if (!index){
+    if (index===-1){
        console.log("No available index")
     }
+    console.log(index)
     const updatedRecipes = [...state.recipes];
     updatedRecipes[index] = newRecipe;
+    console.log(updatedRecipes)
     return { recipes: updatedRecipes };
   }),
-  deleteRecipe: (id) => set((state) => ({
-    recipes: state.recipes.filter(recipe => recipe.id !== id)
-  }))
+  deleteRecipe: (id) => set((state) => {{
+    const eliminate = state.recipes.filter(recipe => recipe.id !== id)
+   return { recipes: [...eliminate]}
+  }})
 }));
