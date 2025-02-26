@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecipeDetails from "./components/EditRecipeForm";
 import SearchBar from "./components/SearchBar";
 import FavoritesList from "./components/FavoritesList";
-
+import RecommendationsList from "../../src/components/RecommendationsList";
 const App = () => {
   return (
     <div className="app">
@@ -13,6 +13,7 @@ const App = () => {
         <h1>Recipe Book</h1>
         <Routes>
           <Route path="/" element={<AddRecipeForm />} />
+          <Route path="/recommendations" element={<RecommendationsList />} />
           <Route path="/details/:id" element={<RecipeDetails />} />
           <Route path="/favorites" element={<FavoritesList />} />
         </Routes>
