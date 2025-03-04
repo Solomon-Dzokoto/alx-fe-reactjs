@@ -29,7 +29,7 @@ const RecipeDetails = () => {
     return <div>Recipe details are not available</div>;
   }
 
-  const handleSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
     updateRecipe({
       id : parseInt(id),
@@ -42,7 +42,7 @@ const RecipeDetails = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <input
           type="text"
           value={newTitle}
