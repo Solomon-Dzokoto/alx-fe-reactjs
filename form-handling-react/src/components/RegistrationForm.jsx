@@ -26,11 +26,13 @@ const RegistrationForm = () => {
         setLoading(false);
         return;
       }
-      if (!email.trim()) {
+
+      if (!email) {
         setErrors("Please fill all the fields");
         setLoading(false);
         return;
       }
+      
       if (password.length < 8) {
         setErrors("Password should be at least 8 characters long");
         setLoading(false);
