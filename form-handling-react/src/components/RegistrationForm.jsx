@@ -6,7 +6,7 @@ const RegistrationForm = () => {
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -21,13 +21,18 @@ const RegistrationForm = () => {
    
 
     try {
-      if (!username.trim() || !email.trim() || !password.trim() ) {
-        setError("Please fill all the fields");
+      if (!username.trim()) {
+        setErrors("Please fill all the fields");
+        setLoading(false);
+        return;
+      }
+      if (!email.trim()) {
+        setErrors("Please fill all the fields");
         setLoading(false);
         return;
       }
       if (password.length < 8) {
-        setError("Password should be at least 8 characters long");
+        setErrors("Password should be at least 8 characters long");
         setLoading(false);
         return;
       }
@@ -36,7 +41,7 @@ const RegistrationForm = () => {
       setFormData(prev=>({...prev,name:"",email:"",password:""}))
       setLoading(false);
     } catch (err) {
-      setError("Invalid input");
+      setErrors("Invalid input");
       console.log(err);
       setLoading(false);
       return;
@@ -50,13 +55,13 @@ const RegistrationForm = () => {
       }, 3000);
       return () => clearTimeout(timer);
     }
-    if (error) {
+    if (errors) {
       const timer = setTimeout(() => {
-        setError("");
+        setErrors("");
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [success, error]);
+  }, [success, errors]);
   return (
     <div className="min-h-screen grid place-content-center">
       <h1 className="text-center text-6xl font-semibold mb-4 text-blue-500 ">
@@ -66,7 +71,7 @@ const RegistrationForm = () => {
         className="space-y-6 w-[25rem] mx-auto h-fit my-auto "
         onSubmit={onSubmit}
       >
-        {error && <p className="text-red-500 text-center">{error}</p>}
+        {errors && <p className="text-red-500 text-center">{errors}</p>}
         {success && <p className="text-green-500 text-center">{success}</p>}
 
         <div>
