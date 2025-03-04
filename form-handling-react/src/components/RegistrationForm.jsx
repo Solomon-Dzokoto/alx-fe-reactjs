@@ -18,10 +18,10 @@ const RegistrationForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    const { name, email, password } = formData;
+   
 
     try {
-      if (!email.trim() || !password.trim() || !name.trim()) {
+      if (!username.trim() || !email.trim() || !password.trim() ) {
         setError("Please fill all the fields");
         setLoading(false);
         return;
