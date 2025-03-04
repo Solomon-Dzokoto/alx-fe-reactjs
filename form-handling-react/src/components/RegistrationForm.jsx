@@ -32,7 +32,12 @@ const RegistrationForm = () => {
         setLoading(false);
         return;
       }
-      
+
+      if (!password) {
+        setErrors("Password  input");
+        setLoading(false);
+        return;
+      }
       if (password.length < 8) {
         setErrors("Password should be at least 8 characters long");
         setLoading(false);
