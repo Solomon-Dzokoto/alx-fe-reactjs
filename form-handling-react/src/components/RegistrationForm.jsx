@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -10,6 +10,7 @@ const RegistrationForm = () => {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const {username,email,password} = formData
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -74,7 +75,7 @@ const RegistrationForm = () => {
             <input
               type="text"
               name="name"
-              value={formData.name}
+              value={username}
               onChange={handleChange}
               placeholder="Username"
               className="mt-1 block placeholder:text-gray-400 w-full p-4 border border-gray-200 rounded-[.5rem]  pr-8 focus:outline-none "
@@ -87,7 +88,7 @@ const RegistrationForm = () => {
             <input
               type="email"
               name="email"
-              value={formData.email}
+              value={email}
               onChange={handleChange}
               placeholder="e.g. john.doe@example.com"
               className="mt-1 block w-full p-4 border border-gray-300 rounded-[.5rem]  focus:outline-none focus:border-blue-500 "
@@ -99,7 +100,7 @@ const RegistrationForm = () => {
             Password
             <input
               type="password"
-              value={formData.password}
+              value={password}
               name="password"
               onChange={handleChange}
               placeholder="Password"
