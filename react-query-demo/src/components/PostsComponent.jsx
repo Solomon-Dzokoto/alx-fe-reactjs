@@ -1,0 +1,44 @@
+import { useQuery } from "@tanstack/react-query";
+
+// const fetchPosts = async () => {
+//   try {
+//     const response = await fetch(
+//       "https://jsonplaceholder.typicode.com/posts/1"
+//     );
+//     return response.json();
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+const PostsComponent = () => {
+  const { data, isPending, error } = useQuery({
+    queryKey: ["post"],
+    queryFn: async () => {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      const data = await response.json();
+      console.log(data);
+      return data;
+    },
+  });
+
+  if (!data) <p>No post fetch</p>;
+  if (isPending) <p>Loading...</p>;
+
+  return (
+    <div>
+      <h1 style={{ alignItems: "center" }}>React Query</h1>
+      <button onClick={() => console.log(data)}>Refetch</button>
+      {data?.slice(0, 9).map((item) => (
+        <div key={item.id}>
+          <h2>{item.title}</h2>
+          <p>{item.body}</p>
+        </div>
+      ))}
+      {error && <p>Error: {error.message}</p>}
+    </div>
+  );
+};
+
+export default PostsComponent;
