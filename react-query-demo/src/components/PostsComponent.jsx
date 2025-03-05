@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 //   }
 // };
 const PostsComponent = () => {
-  const { data, isPending, error } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["post"],
     queryFn: async () => {
       const response = await fetch(
@@ -24,7 +24,7 @@ const PostsComponent = () => {
   });
 
   if (!data) <p>No post fetch</p>;
-  if (isPending) <p>Loading...</p>;
+  if (isLoading) <p>Loading...</p>;
 
   return (
     <div>
@@ -36,7 +36,7 @@ const PostsComponent = () => {
           <p>{item.body}</p>
         </div>
       ))}
-      {error && <p>Error: {error.message}</p>}
+      {isError && <p>Error: {isError.message}</p>}
     </div>
   );
 };
