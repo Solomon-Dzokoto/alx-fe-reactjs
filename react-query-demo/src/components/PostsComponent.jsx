@@ -21,6 +21,12 @@ const PostsComponent = () => {
       console.log(data);
       return data;
     },
+      cacheTime: 1000 * 60 * 60 * 5, 
+      staleTime: 1000 * 60 * 1,
+      refetchOnWindowFocus: false,
+      keepPreviousData: true,
+    
+  
   });
 
   if (!data) <p>No post fetch</p>;
