@@ -19,8 +19,9 @@ describe('TodoList Component', () => {
   test('can toggle todo completion', () => {
     render(<TodoList />);
     const todoCheckbox = screen.getByTestId('todo-1');
-    fireEvent.click(todoCheckbox);
     const todoText = screen.getByText('Learn React');
+    
+    fireEvent.click(todoCheckbox);
     expect(todoText).toHaveClass('line-through');
   });
 
@@ -34,7 +35,7 @@ describe('TodoList Component', () => {
 
 describe('AddTodoForm Component', () => {
   test('can add a new todo', () => {
-    render(<TodoApp />);
+    render(<TodoList />);
     
     const input = screen.getByPlaceholderText('Add a new todo');
     const submitButton = screen.getByText('Add Todo');
@@ -46,7 +47,7 @@ describe('AddTodoForm Component', () => {
   });
 
   test('does not add empty todos', () => {
-    render(<TodoApp />);
+    render(<TodoList />);
     
     const todoCountBefore = screen.getAllByRole('listitem').length;
     const submitButton = screen.getByText('Add Todo');
