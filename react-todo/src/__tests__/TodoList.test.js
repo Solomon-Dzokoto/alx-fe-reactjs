@@ -26,10 +26,11 @@ describe("TodoList Component", () => {
 
   test("toggles todo completion status", () => {
     render(<TodoList />);
-    const todo = screen.getByTestId("todo-1"); // "Learn React"
-    fireEvent.click(todo);
-
-    expect(todo).toHaveStyle("text-decoration: line-through");
+    const todoCheckbox = screen.getByTestId("todo-1");
+    const todoText = screen.getByText("Learn React");
+    
+    fireEvent.click(todoCheckbox);
+    expect(todoText).toHaveClass("line-through");
   });
 
   test("deletes a todo", () => {
