@@ -6,14 +6,11 @@ import ProtectedRoute from "./ProtectedRoute";
 const Profile = () => {
   return (
     <div>
-      <Routes>
-        <ProtectedRoute>
-          <Route path="/" element={<Profile />}>
-            <Route path="/details" element={<ProfileDetails />} />
-            <Route path="/settings" element={<ProfileSettings />} />
-          </Route>
-        </ProtectedRoute>
-      </Routes>
+      <h1>Profile</h1>
+      <ProtectedRoute>
+        <Route path="/details" element={<ProfileDetails />} />
+        <Route path="/settings" element={<ProfileSettings />} />
+      </ProtectedRoute>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Profile from "./components/ Profile";
+import Profile from "./components/Profile";
 import BlogPost from "./components/BlogPost";
 const App = () => {
   return (
