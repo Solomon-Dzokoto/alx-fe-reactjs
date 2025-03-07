@@ -1,16 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from "./components/ Profile";
-import ProfileDetails from "./components/ProfileDetails";
-import ProfileSettings from "./components/ProfileSettings";
-import ProtectedRoute from "./components/ProtectedRoute";
-
+import BlogPost from "./components/BlogPost";
 const App = () => {
   return (
     <div>
       <Router>
         <Routes>
           <Route path="/" element={<Profile />}/>
-          <Route path="/blog/:id" element={<Profile />}/>
+          <Route path="/blog/:id" element={<BlogPost />}/>
         </Routes>
       </Router>
     </div>
