@@ -8,7 +8,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route
-            path="/"
+            path="/profile"
             element={
               <ProtectedRoute>
                 <Profile />
