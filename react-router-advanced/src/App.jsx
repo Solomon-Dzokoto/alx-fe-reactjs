@@ -9,13 +9,8 @@ const App = () => {
     <div>
       <Router>
         <Routes>
-          <Route path="/" element={<Profile />}>
-            <ProtectedRoute>
-              <Route path="/details" element={<ProfileDetails />} />
-            </ProtectedRoute>
-            <Route path="/details" element={<ProfileDetails />} />
-            <Route path="/settings" element={<ProfileSettings />} />
-          </Route>
+          <Route path="/" element={<Profile />}/>
+          <Route path="/blog/:id" element={<Profile />}/>
         </Routes>
       </Router>
     </div>
