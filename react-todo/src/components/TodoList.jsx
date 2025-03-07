@@ -1,58 +1,37 @@
-import { useState } from "react";
+import useTodoStore from "./useTodoStore";
+import AddTodoForm from "./AddTodoForm";
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([
-    { id: 1, title: "Learn React", completed: false },
-    { id: 2, title: "Build a Todo App", completed: true },
-  ]);
-  const [inputValue, setInputValue] = useState("");
-
-  // Add a new todo
-  const addTodo = (e) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
-    setTodos([...todos, { id: Date.now(), title: inputValue, completed: false }]);
-    setInputValue("");
-  };
-
-  // Toggle completed status
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
-
-  // Delete a todo
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
+  const todos = useTodoStore(state => state.todos);
+  const deleteTodo = useTodoStore(state => state.deleteTodo);
+  const changeCheckboxState = useTodoStore(state => state.changeCheckboxState);
 
   return (
-    <div>
-      <h1>Todo List</h1>
-      <form onSubmit={addTodo}>
-        <input
-          type="text"
-          placeholder="Add a new todo"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <button type="submit">Add Todo</button>
-      </form>
-
+    <div className="space-y-4">
+      <h1 className="text-2xl font-bold mb-4">Todo List</h1>
+      <AddTodoForm />
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
-            <span
+          <li key={todo.id} className="border-2 w-full gap-4 justify-between flex items-center rounded-2xl p-4">
+            <input 
+              type="checkbox" 
+              checked={todo.checked} 
+              onChange={() => changeCheckboxState(todo.id)}
               data-testid={`todo-${todo.id}`}
-              onClick={() => toggleTodo(todo.id)}
-              style={{ textDecoration: todo.completed ? "line-through" : "none" }}
+            />
+            <h1 
+              className={`text-lg ${todo.checked ? "line-through text-red-400" : "text-white"} flex-1 font-bold`}
+              onClick={() => changeCheckboxState(todo.id)}
             >
               {todo.title}
-            </span>
-            <button data-testid={`delete-${todo.id}`} onClick={() => deleteTodo(todo.id)}>X</button>
+            </h1>
+            <button 
+              className="bg-red-500 px-4 py-2 rounded-full"
+              onClick={() => deleteTodo(todo.id)}
+              data-testid={`delete-${todo.id}`}
+            >
+              X
+            </button>
           </li>
         ))}
       </ul>
