@@ -10,7 +10,6 @@ const HomePage = () => {
     try {
       const response = await fetch("/data.json");
       const data = await response.json();
-      console.log(data);
       setRecipes(data);
       setLoading(false);
     } catch {
@@ -33,10 +32,10 @@ const HomePage = () => {
       <ul className="grid grid-cols-1 gap-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         {recipes.map((recipe) => (
           <li
-            key={recipe.id}
+            key={recipe?.id}
             className="flex flex-col group p-4 bg-white rounded-lg shadow-2xl "
           >
-            <Link to={`/recipe/${recipe.id}`}>
+            <Link to={`/recipe/${recipe?.id}`}>
               <img
                 className="p-4 group-hover:scale-[1.1]   transition-scale duration-200 overflow-hidden"
                 src={recipe?.image}
