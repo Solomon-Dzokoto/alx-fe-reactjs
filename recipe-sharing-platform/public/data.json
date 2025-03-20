@@ -4,7 +4,7 @@
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
     "image": "/assets/food.jpeg",
-    "ingredient": [
+    "ingredients": [
       {
         "name": "Spaghetti",
         "quantity": "200g"
@@ -40,7 +40,7 @@
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
     "image": "/assets/food.jpeg",
-    "ingredient": [
+    "ingredients": [
       {
         "name": "Chicken",
         "quantity": "500g"
@@ -76,7 +76,7 @@
     "title": "Chicken Alfredo",
     "summary": "A simple and quick weeknight dinner made with fettuccine, cream, butter, and Parmesan.",
     "image": "/assets/food.jpeg",
-    "ingredient": [
+    "ingredients": [
       {
         "name": "Fettuccine",
         "quantity": "200g"
@@ -111,7 +111,7 @@
     "title": "Chicken Parmesan",
     "summary": "A classic Italian-American dish made with breaded chicken, marinara sauce, and mozzarella cheese.",
     "image": "/assets/food.jpeg",
-    "ingredient": [
+    "ingredients": [
       {
         "name": "Chicken Breast",
         "quantity": "2"
@@ -147,7 +147,7 @@
     "title": "Beef Stroganoff",
     "summary": "A Russian dish made with sautéed pieces of beef served in a sauce with sour cream.",
     "image": "/assets/food.jpeg",
-    "ingredient": [
+    "ingredients": [
       {
         "name": "Beef",
         "quantity": "500g"

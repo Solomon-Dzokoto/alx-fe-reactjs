@@ -51,7 +51,7 @@ const RecipeDetail = () => {
             {" "}
             Ingredients
           </h1>
-          {recipe?.ingredient?.map((ingredient, index) => (
+          {recipe?.ingredients?.map((ingredient, index) => (
             <li className=" list-disc " key={index}>
               {ingredient?.name}-{ingredient?.quantity}
             </li>
