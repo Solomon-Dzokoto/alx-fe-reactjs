@@ -1,8 +1,8 @@
-import HomPage from "./components/HomPage";
+import HomePage from "./components/HomePage";
 const App = () => {
   return (
     <div>
-      <HomPage />
+      <HomePage />
     </div>
   );
 };
