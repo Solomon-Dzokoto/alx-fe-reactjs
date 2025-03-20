@@ -29,7 +29,7 @@ const HomePage = () => {
   return (
     <div className=" container mx-auto p-4">
       <h1>Home page</h1>
-      <ul className="grid grid-cols-1 gap-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         {recipes.map((recipe) => (
           <li
             key={recipe.id}
