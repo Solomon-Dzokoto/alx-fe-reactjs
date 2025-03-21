@@ -51,7 +51,7 @@ const AddRecipeForm = () => {
       </h1>
       {errors && <p className="text-red-700 text-center ">{errors}</p>}
       <form
-        className="w-1/2 mx-auto space-y-4 bg-white rounded-3xl shadow-2xl p-8 "
+        className="md:w-1/2 w-[80%] mx-auto space-y-4 bg-white rounded-3xl shadow-2xl p-8 "
         onSubmit={handleSubmit}
       >
         <label className="block">Recipe Name:</label>
