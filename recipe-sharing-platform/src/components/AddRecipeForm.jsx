@@ -13,7 +13,7 @@ const AddRecipeForm = () => {
 
   console.log(data);
 
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
@@ -51,7 +51,7 @@ const AddRecipeForm = () => {
       {error && <p className="text-red-700 text-center ">{error}</p>}
       <form
         className="w-1/2 mx-auto space-y-4 bg-white rounded-3xl shadow-2xl p-8 "
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
       >
         <label className="block">Recipe Name:</label>
         <input
@@ -70,7 +70,7 @@ const AddRecipeForm = () => {
           placeholder="Add your ingredients"
           className="w-full border-2 p-2 rounded-2xl mt-2  h-[8rem]"
         />
-        <label className="block">Preparations:</label>
+        <label className="block">Steps or Preparations to take:</label>
         <textarea
           value={preparations}
           onChange={(e) => setPreparations(e.target.value)}
