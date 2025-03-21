@@ -8,7 +8,7 @@ const RecipeDetail = () => {
   console.log("Use Params ID:", id);
   const fetchRecipe = async () => {
     try {
-      const response = await fetch("/data.json");
+      const response = await fetch("/data/data.json");
       const data = await response.json();
       setRecipes(data);
     } catch {

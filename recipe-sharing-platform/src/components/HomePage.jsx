@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import data from "../data";
+import useData from "../store/useData";
 import { Link } from "react-router-dom";
 const HomePage = () => {
   const [loading, setLoading] = useState(false);
-  const [recipes, setRecipes] = useState([]);
+  const { recipes, updateRecipe } = useData;
 
   const fetchRecipe = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/data.json");
+      const response = await fetch("/data/data.json");
       const data = await response.json();
-      setRecipes(data);
-      setLoading(false);
+      updateRecipe(data);
     } catch {
       console.log("Error fetching data");
       setLoading(false);
@@ -24,6 +23,7 @@ const HomePage = () => {
     fetchRecipe();
   }, []);
 
+  if (loading) <>Loading...</>;
   return (
     <div className=" container mx-auto p-4">
       <h1 className="text-2xl text-blue-800 font-extrabold text-center">
