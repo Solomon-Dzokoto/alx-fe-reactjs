@@ -6,7 +6,7 @@ import useData from "../store/useData";
 const AddRecipeForm = () => {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [preparations, setPreparations] = useState("");
+  const [steps, setSteps] = useState("");
   const updateRecipe = useData((state) => state.updateRecipe);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const AddRecipeForm = () => {
     e.preventDefault();
     setError("");
     try {
-      if (!name || !ingredients || !preparations) {
+      if (!name || !ingredients || !steps) {
         setError("Please fill all the fields");
         return;
       }
@@ -29,12 +29,12 @@ const AddRecipeForm = () => {
         id: data.length + 1,
         title: name,
         ingredients,
-        preparations,
+        steps,
       });
       setError("recipe added  successfully");
       setError("");
       setIngredients("");
-      setPreparations("");
+      setSteps("");
       setName("");
       navigate("/");
     } catch (err) {
@@ -46,7 +46,7 @@ const AddRecipeForm = () => {
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-xl text-blue-600 text-center font-bold mb-6">
-        Add your Recipe Preparations
+        Add your Recipe steps
       </h1>
       {error && <p className="text-red-700 text-center ">{error}</p>}
       <form
@@ -70,10 +70,10 @@ const AddRecipeForm = () => {
           placeholder="Add your ingredients"
           className="w-full border-2 p-2 rounded-2xl mt-2  h-[8rem]"
         />
-        <label className="block">Steps or Preparations to take:</label>
+        <label className="block">Steps or steps to take:</label>
         <textarea
-          value={preparations}
-          onChange={(e) => setPreparations(e.target.value)}
+          value={steps}
+          onChange={(e) => setSteps(e.target.value)}
           className="w-full border-2 p-2 rounded-2xl mt-2  h-[8rem]"
         />
         <button
