@@ -7,7 +7,7 @@ const AddRecipeForm = () => {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
-  const updateRecipe = useData((state) => state.updateRecipe);
+  const addRecipe = useData((state) => state.addRecipe);
   const [errors, setErrors] = useState("");
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const AddRecipeForm = () => {
         setErrors("Please add at least two ingredients");
         return;
       }
-      updateRecipe({
+      addRecipe({
         id: data.length + 1,
         title: name,
         ingredients,

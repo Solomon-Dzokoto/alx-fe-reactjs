@@ -3,25 +3,29 @@ import useData from "../store/useData";
 import { Link } from "react-router-dom";
 const HomePage = () => {
   const [loading, setLoading] = useState(false);
-  const { recipes, updateRecipe } = useData;
+  const { recipes, updateRecipe } = useData();
 
-  const fetchRecipe = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch("/data/data.json");
-      const data = await response.json();
-      updateRecipe(data);
-    } catch {
-      console.log("Error fetching data");
-      setLoading(false);
-    } finally {
-      console.log("Fetching data completed");
-      setLoading(false);
-    }
-  };
   useEffect(() => {
-    fetchRecipe();
-  }, []);
+    const fetchRecipe = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/data/data.json");
+        const data = await response.json();
+        console.log("fetch Recipe data successfully:", data);
+        updateRecipe(data);
+      } catch {
+        console.log("Error fetching data");
+        setLoading(false);
+      } finally {
+        console.log("Fetching data completed");
+        setLoading(false);
+      }
+    };
+    fetchRecipe()
+  }, [updateRecipe]);
+
+  console.log(recipes);
+  console.log(updateRecipe);
 
   if (loading) <>Loading...</>;
   return (
@@ -30,7 +34,7 @@ const HomePage = () => {
         Home page
       </h1>
       <ul className="grid grid-cols-1 gap-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        {recipes.map((recipe) => (
+        {(recipes || [])?.map((recipe) => (
           <li
             key={recipe?.id}
             className="flex flex-col group p-4 bg-white rounded-lg shadow-2xl "
