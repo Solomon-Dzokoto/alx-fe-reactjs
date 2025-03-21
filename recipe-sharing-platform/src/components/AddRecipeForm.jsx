@@ -8,21 +8,22 @@ const AddRecipeForm = () => {
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
   const updateRecipe = useData((state) => state.updateRecipe);
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState("");
   const navigate = useNavigate();
 
   console.log(data);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setErrors("");
     try {
       if (!name || !ingredients || !steps) {
-        setError("Please fill all the fields");
+        setErrors("Please fill all the fields");
         return;
       }
-      if (ingredients.split(" ").length < 2) {
-        setError("Please add at least two ingredients");
+      const validate = ingredients.split(" ").length < 2;
+      if (validate) {
+        setErrors("Please add at least two ingredients");
         return;
       }
       updateRecipe({
@@ -31,15 +32,15 @@ const AddRecipeForm = () => {
         ingredients,
         steps,
       });
-      setError("recipe added  successfully");
-      setError("");
+      setErrors("recipe added  successfully");
+      setErrors("");
       setIngredients("");
       setSteps("");
       setName("");
       navigate("/");
     } catch (err) {
-      console.log("Error adding data", err);
-      setError("Error adding data");
+      console.log("Errors adding data", err);
+      setErrors("Errors adding data");
     }
   };
 
@@ -48,7 +49,7 @@ const AddRecipeForm = () => {
       <h1 className="text-xl text-blue-600 text-center font-bold mb-6">
         Add your Recipe steps
       </h1>
-      {error && <p className="text-red-700 text-center ">{error}</p>}
+      {errors && <p className="text-red-700 text-center ">{errors}</p>}
       <form
         className="w-1/2 mx-auto space-y-4 bg-white rounded-3xl shadow-2xl p-8 "
         onSubmit={handleSubmit}
