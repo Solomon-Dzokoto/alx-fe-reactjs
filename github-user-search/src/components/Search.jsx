@@ -38,6 +38,7 @@ export default function Search() {
           className="border border-blue p-2 my-4 block w-2/3 mx-auto "
           placeholder="search your Github Username"
         />
+        <button type="submit"> Search </button>
       </form>
       <div className="">{loading && <p>Loading...</p>}</div>
       <div className="">
@@ -51,6 +52,7 @@ export default function Search() {
             alt={userData.name}
           />
           <h2 className="text-2xl">{userData?.name}</h2>
+          <p>{userData?.login}</p>
         </div>
       )}
     </div>
